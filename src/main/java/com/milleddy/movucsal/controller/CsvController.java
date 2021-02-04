@@ -6,12 +6,12 @@ import com.milleddy.movucsal.service.CsvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -45,4 +45,18 @@ public class CsvController {
         }
 
     }
+
+    @GetMapping("/teste")
+    List<String> returnOk() {
+        try {
+            List<String> tes = new ArrayList<>();
+            tes.add("You did it! It's alive =D");
+
+            return tes;
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_GATEWAY, e.getMessage());
+        }
+    }
+
 }
