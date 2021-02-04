@@ -47,15 +47,12 @@ public class CsvController {
     }
 
     @GetMapping("/teste")
-    List<String> returnOk() {
+    String returnOk() {
         try {
-            List<String> tes = new ArrayList<>();
-            tes.add("You did it! It's alive =D");
-
-            return tes;
+            return "You did it! It's alive =D";
         } catch (Exception e) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_GATEWAY, e.getMessage());
+                    HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
